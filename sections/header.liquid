@@ -10,6 +10,58 @@
 {%- if section.settings.menu_type_desktop == 'mega' -%}
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
+<header class="site-header">
+  <div class="header-container">
+    
+    <!-- Logo -->
+    <div class="header-logo">
+      <a href="{{ routes.root_url }}">Trending Gadgets</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="header-nav">
+      <ul>
+        <li><a href="{{ routes.root_url }}">Home</a></li>
+        <li><a href="/collections/all">Catalog</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Search -->
+    <div class="header-search">
+      <form action="/search" method="get" role="search">
+        <select class="category-select">
+          <option>All Categories</option>
+        </select>
+        <input type="search" name="q" placeholder="What are you looking for?">
+        <button type="submit">
+          {% render 'icon-search' %}
+        </button>
+      </form>
+    </div>
+
+    <!-- Icons -->
+    <div class="header-icons">
+      <a href="/account">{% render 'icon-account' %}</a>
+      <a href="/cart">{% render 'icon-cart' %}</a>
+    </div>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Header color scheme",
+      "default": "default"
+    }
+  ]
+}
+{% endschema %}
 
 
 <style>
